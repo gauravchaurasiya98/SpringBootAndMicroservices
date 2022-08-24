@@ -6,7 +6,7 @@ import in.gaurav.entity.Person;
 import java.util.List;
 
 public interface PersonManagementService {
-    Person savePersonDetails(Person person) throws CloneNotSupportedException;
+    Person savePersonDetails(Person person);
     ContactNumber saveContactNumberDetails(ContactNumber contactNumber);
     List<ContactNumber> saveAllContactNumberDetails(List<ContactNumber> contactNumberList);
 }

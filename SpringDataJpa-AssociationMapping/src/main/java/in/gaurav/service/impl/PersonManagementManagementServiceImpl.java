@@ -20,7 +20,7 @@ public class PersonManagementManagementServiceImpl implements PersonManagementSe
     private ContactNumberRepository contactNumbersRepository;
 
     @Override
-    public Person savePersonDetails(Person person) throws CloneNotSupportedException {
+    public Person savePersonDetails(Person person) {
         return personRepository.saveAndFlush(person);
     }
 

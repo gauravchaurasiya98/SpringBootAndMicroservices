@@ -16,7 +16,7 @@ public class PersonManagementRunner implements CommandLineRunner {
     private PersonManagementService personManagementService;
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         Person person = new Person();
         person.setPersonName("Rahul Jacker");
         person.setPersonAddress("Maheshkhunt");

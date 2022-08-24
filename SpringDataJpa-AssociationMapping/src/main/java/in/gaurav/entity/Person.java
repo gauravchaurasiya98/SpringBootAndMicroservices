@@ -26,7 +26,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "PERSON_OTM")
-public class Person implements Cloneable, Serializable {
+public class Person implements Serializable {
     @Id
     @GeneratedValue(generator = "PERSON_ID_GENERATOR", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "PERSON_ID_GENERATOR", sequenceName = "PERSON_OTM_PERSON_ID_SEQUENCE", initialValue = 101, allocationSize = 1)
@@ -38,9 +38,4 @@ public class Person implements Cloneable, Serializable {
 
     @OneToMany(targetEntity = ContactNumber.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "person")
     private Set<ContactNumber> contactNumberSet;
-
-    @Override
-    public Person clone() throws CloneNotSupportedException {
-        return (Person) super.clone();
-    }
 }
