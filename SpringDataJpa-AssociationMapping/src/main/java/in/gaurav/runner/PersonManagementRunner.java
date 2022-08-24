@@ -18,7 +18,7 @@ public class PersonManagementRunner implements CommandLineRunner {
     @Override
     public void run(String... args) {
         Person person = new Person();
-        person.setPersonName("Gaurav Chaurasiya");
+        person.setPersonName("Gaurav");
         person.setPersonAddress("Maheshkhunt");
         ContactNumber contactNumber1 = new ContactNumber();
         contactNumber1.setNumber(9988776655L);
