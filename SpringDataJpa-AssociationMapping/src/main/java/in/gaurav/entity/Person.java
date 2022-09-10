@@ -38,4 +38,9 @@ public class Person implements Serializable {
 
     @OneToMany(targetEntity = ContactNumber.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "person")
     private Set<ContactNumber> contactNumberSet;
+
+    public void setContactNumberSet(Set<ContactNumber> contactNumberSet) {
+        this.contactNumberSet = contactNumberSet;
+        contactNumberSet.forEach(contactNumber -> contactNumber.setPerson(this));
+    }
 }

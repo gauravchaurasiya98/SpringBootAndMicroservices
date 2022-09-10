@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Set;
 
-@Component
+// @Component
 public class PersonManagementRunner implements CommandLineRunner {
 
     @Autowired
@@ -24,12 +24,10 @@ public class PersonManagementRunner implements CommandLineRunner {
         contactNumber1.setNumber(9988776655L);
         contactNumber1.setNumberType("Personal");
         contactNumber1.setOperator("Jio");
-        contactNumber1.setPerson(person);
         ContactNumber contactNumber2 = new ContactNumber();
         contactNumber2.setNumber(5566778899L);
         contactNumber2.setNumberType("Home");
         contactNumber2.setOperator("Jio");
-        contactNumber2.setPerson(person);
         person.setContactNumberSet(Set.of(contactNumber1, contactNumber2));
         personManagementService.savePersonDetails(person);
     }
