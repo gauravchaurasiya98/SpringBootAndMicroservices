@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class PersonManagementManagementServiceImpl implements PersonManagementService {
@@ -30,8 +31,8 @@ public class PersonManagementManagementServiceImpl implements PersonManagementSe
     }
 
     @Override
-    public List<ContactNumber> saveAllContactNumberDetails(List<ContactNumber> contactNumberList) {
-        return contactNumbersRepository.saveAllAndFlush(contactNumberList);
+    public List<ContactNumber> saveAllContactNumberDetails(Set<ContactNumber> contactNumbers) {
+        return contactNumbersRepository.saveAllAndFlush(contactNumbers);
     }
 
 }

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Set;
+
 @RestController
 @RequestMapping(value = "/person/management/", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PersonManagementController {
@@ -31,6 +33,15 @@ public class PersonManagementController {
     public ResponseEntity<?> saveContactNumberDetails(@RequestBody ContactNumber contactNumber) {
         try {
             return ResponseEntity.ok(personManagementService.saveContactNumberDetails(contactNumber));
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body(e);
+        }
+    }
+
+    @PostMapping(value = "saveAllContactNumberDetails", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> saveContactNumberDetails(@RequestBody Set<ContactNumber> contactNumbers) {
+        try {
+            return ResponseEntity.ok(personManagementService.saveAllContactNumberDetails(contactNumbers));
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body(e);
         }
