@@ -39,7 +39,7 @@ public class PersonManagementController {
     }
 
     @PostMapping(value = "saveAllContactNumberDetails", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> saveContactNumberDetails(@RequestBody Set<ContactNumber> contactNumbers) {
+    public ResponseEntity<?> saveAllContactNumberDetails(@RequestBody Set<ContactNumber> contactNumbers) {
         try {
             return ResponseEntity.ok(personManagementService.saveAllContactNumberDetails(contactNumbers));
         } catch (Exception e) {
