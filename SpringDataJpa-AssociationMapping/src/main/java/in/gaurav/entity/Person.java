@@ -35,6 +35,6 @@ public class Person implements Serializable {
     @Column(length = 20)
     private String personAddress;
 
-    @OneToMany(targetEntity = ContactNumber.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "person")
+    @OneToMany(targetEntity = ContactNumber.class, mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<ContactNumber> contactNumberSet;
 }

@@ -32,7 +32,7 @@ public class ContactNumber implements Serializable {
 	private String operator;
 
 	@ManyToOne(targetEntity = Person.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "PERSON_ID", referencedColumnName = "personId")
+	@JoinColumn(name = "PERSON_ID", referencedColumnName = "personId", nullable = false)
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Person person;
 }
