@@ -1,4 +1,5 @@
-**Spring Cloud API Gateway** - Make sure you are using the right URLs?
+## Spring Cloud API Gateway
+Make sure you are using the right URLs?
 
 **Discovery**
 
