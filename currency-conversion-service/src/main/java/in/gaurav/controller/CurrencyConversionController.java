@@ -12,10 +12,15 @@ import org.springframework.web.client.RestTemplate;
 
 import in.gaurav.bo.CurrencyConversion;
 import in.gaurav.currency.exchange.service.CurrencyExchangeClient;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequestMapping("/currency-conversion")
 public class CurrencyConversionController {
+
+	@Autowired
+	private RestTemplate restTemplate;
 
 	@Autowired
 	private CurrencyExchangeClient currencyExchangeClient;
@@ -23,7 +28,8 @@ public class CurrencyConversionController {
 	@GetMapping("/from/{from}/to/{to}/quantity/{quantity}")
 	public ResponseEntity<CurrencyConversion> getConversionValue(@PathVariable String from, @PathVariable String to,
 			@PathVariable BigDecimal quantity) {
-		CurrencyConversion currencyConversion = new RestTemplate().getForObject(
+		log.info("getConversionValue called with {} to {} for quantity {}", from, to, quantity);
+		CurrencyConversion currencyConversion = restTemplate.getForObject(
 				"http://127.0.0.1:8000/currency-exchange/from/{from}/to/{to}", CurrencyConversion.class,
 				from.toUpperCase(), to.toUpperCase());
 		currencyConversion.setQuantity(quantity);
@@ -34,6 +40,7 @@ public class CurrencyConversionController {
 	@GetMapping("/feign/from/{from}/to/{to}/quantity/{quantity}")
 	public ResponseEntity<CurrencyConversion> getConversionValueByFeign(@PathVariable String from,
 			@PathVariable String to, @PathVariable BigDecimal quantity) {
+		log.info("getConversionValueByFeign called with {} to {} for quantity {}", from, to, quantity);
 		CurrencyConversion currencyConversion = currencyExchangeClient
 				.getExchangeValue(from.toUpperCase(), to.toUpperCase()).getBody();
 		currencyConversion.setQuantity(quantity);

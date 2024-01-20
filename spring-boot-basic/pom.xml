@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>in.gaurav</groupId>
 	<artifactId>spring-boot-basic</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-RELEASE</version>
 	<name>spring-boot-basic</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -88,6 +88,10 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<image>
+						<name>gauravchaurasiya/${project.artifactId}:${project.version}</name>
+					</image>
+					<pullPolicy>IF_NOT_PRESENT</pullPolicy>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
